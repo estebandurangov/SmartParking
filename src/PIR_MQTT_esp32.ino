@@ -1,6 +1,7 @@
 /* ----- Include Libraries ----- */
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <Servo.h>
 
 /* ----- Third Libraries ----- */
 #include "config.h"  // Set your network SSID and password in this file
@@ -9,27 +10,30 @@
 #include "ESP32_Utils_MQTT.hpp"
 
 /* ----- Ports ----- */
-#define PIR_MOTION_SENSOR 13               // Pin for PIR sensor in the esp32 board
+#define LINEAR_HALL_SENSOR 34               // Pin for PIR sensor in the esp32 board
+#define SERVO_PIN 26 // ESP32 pin GIOP26 connected to servo motor
 
 /* ----- Variables ----- */
 long mov_timer = 0;
+long mov_timer2 = 0;
 long ka_timer = 0;
 
 char msg[50];
-int value = 0;
-
-// Variable state represents home state-> 0 normal  - 1 lookout
-char home_state = 0;
+int sensorValue;
+int previousSensorValue = 1901;
 
 /* Topics */
-char topic[] = "sensor";
+char topicSensor[] = "sensor";
+char topicMotor[] = "motor";
 
 /* ----- Main funtions ----- */
 
 // setup
 void setup() {
   // set PIN_PIR a pin as an input
-  pinMode(PIR_MOTION_SENSOR, INPUT);   
+  pinMode(LINEAR_HALL_SENSOR, INPUT);
+  servoMotor.attach(SERVO_PIN);  // attaches the servo on ESP32 pin
+
   // Serial setup
   Serial.begin(9600);  
   ConnectWiFi_STA(false);
@@ -41,29 +45,25 @@ void setup() {
 void loop() {
   HandleMqtt();
   long now = millis(); 
-  //get PIR data each 500ms 
+  //get sensor data each 500ms 
   if (now - mov_timer > 500) { 
     mov_timer = now;
-    Serial.print(home_state);
-    int sensorResponse = digitalRead(PIR_MOTION_SENSOR);
-    Serial.print("ATENCION");
-    Serial.print(sensorResponse);
-    // if(){//if it detects the moving people?
-    //       snprintf (msg, 50, "oelo");
-    //       Serial.print("Publish message: ");115200
-    //       Serial.println(msg);
-    //       PublisMqttString(topic, msg);
-    // }
+    int sensorValue = analogRead(LINEAR_HALL_SENSOR);
+    Serial.println(sensorValue);
+    if(sensorValue < 1900 && previousSensorValue > 1900){
+      snprintf (msg, 50, "1");
+      PublisMqttString(topicSensor, msg);
+    }
+    previousSensorValue = sensorValue;
   }
 
   // Sending Keep Alive message each 5 seconds
-  if (now - ka_timer > 5000) { 
-    ka_timer = now;
-    // DeviceID=3,ONLINE_STATE
-    snprintf (msg, 50, "3,100" );
-    Serial.print("Sending Movement keep alive message to Rpi: ");
-    Serial.println(msg);
-    PublisMqttString(topic, msg);
-  }
-  
+  // if (now - ka_timer > 5000) { 
+  //   ka_timer = now;
+  //   // DeviceID=3,ONLINE_STATE
+  //   snprintf (msg, 50, "3,100" );
+  //   Serial.print("Sending Movement keep alive message to Rpi: ");
+  //   Serial.println(msg);
+  //   PublisMqttString(topicSensor, msg);
+  // }
 }
