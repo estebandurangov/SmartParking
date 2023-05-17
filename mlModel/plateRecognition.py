@@ -5,7 +5,7 @@ import pytesseract
 from PIL import Image
 
 def reconocerPlaca():
-    img = cv2.imread("/home/admin/IoT/SmartParking/things/test.jpg",cv2.IMREAD_COLOR)
+    img = cv2.imread("/home/admin/IoT/SmartParking/things/miplaca.jpg",cv2.IMREAD_COLOR)
     img = cv2.resize(img, (620,480) )
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #convert to grey scale
     gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
@@ -68,4 +68,4 @@ def reconocerPlaca():
 
     text = pytesseract.image_to_string(Cropped, config='--psm 6')
     cv2.destroyAllWindows()
-    return text
+    return text.strip()
