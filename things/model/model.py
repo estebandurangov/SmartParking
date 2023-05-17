@@ -7,6 +7,8 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from model.Engine import getEngine
+from model.model import *
 
 class Base(DeclarativeBase):
     pass
@@ -47,7 +49,6 @@ class Celda(Base):
     def __repr__(self) -> str:
         return self.placa
     
-engine = create_engine("sqlite:///db.sqlite", echo=True)
-Base.metadata.create_all(engine)
-
-
+# engine = create_engine("sqlite:///db.sqlite", echo=True)
+Base.metadata.create_all(getEngine())
+# buscarPlaca("TAD338")
