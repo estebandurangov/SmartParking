@@ -1,10 +1,8 @@
+import kivy
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy import Config
-from functools import partial
+from kivy.uix.label import Label
 
 import paho.mqtt.client as mqtt
 import time
@@ -14,7 +12,6 @@ from picamera2 import Picamera2, Preview
 from model.plateRecognition import processPlate
 from database.operations import readPlate
 from database.operations import createVehicle
-
 
 def takePicture(route):
 	picam2 = Picamera2()
@@ -38,35 +35,39 @@ def cameraHandler():
 		print('\nNo puedo abrir puerta')
 		#client.publish("luz_ingreso","1") # 1 => prende rojo => acceso denegado. 2 => prende azul => procesando. 3 => prende verde => acceso permitido
 
-def on_message(client, userdata, message):
-	processedMessage = message.payload.decode()
-	topic = message.topic
+class MyBox(BoxLayout):
+	pass
 
-	if topic == "camera" and processedMessage == "1":
-		cameraHandler()
+class EdgeApp(App):
+	
+	def build(self):
+		return MyBox()
 
-class MyApp(App):
-    client = mqtt.Client()
-    client.connect("localhost", 1883)
-    client.subscribe("camera")
-    client.on_message = on_message
-    client.loop_start()
+	def registerHandler(self, cedula, placa):
+		result = createVehicle(cedula, placa)
+		self.client.publish("register", result)
+	
+	def on_start(self):
+		
+		def on_message(client, userdata, message):
+			processedMessage = str(message.payload.decode("utf-8"))
+			topic = message.topic
 
-    def build(self):
-        layout = BoxLayout(orientation='vertical', padding=10)
+			if topic == "camera" and processedMessage == "1":
+				cameraHandler()
 
-        layout.add_widget(Label(text='Cedula'))
-        cedula = TextInput(multiline=False)
-        layout.add_widget(cedula)
-
-        layout.add_widget(Label(text='Placa'))
-        placa = TextInput(multiline=False)
-        layout.add_widget(placa)
-
-        button = Button(text='Registrar', on_release=lambda instance: createVehicle(placa.text, cedula.text))
-        layout.add_widget(button)
-
-        return layout
-
-if __name__ == '__main__':
-    MyApp().run()
+			if topic == "register":
+				userdata['self'].root.ids.registrar_label.text = str(message.payload.decode("utf-8"))
+		
+		parameters = {'self':self}
+		self.client = mqtt.Client(client_id='p1',
+									clean_session = True,
+									userdata = parameters)
+		self.client.connect("localhost", 1883)
+		self.client.on_message = on_message
+		self.client.subscribe("camera")
+		self.client.subscribe("register")
+		self.client.loop_start()
+	
+if __name__ == "__main__":
+	EdgeApp().run()

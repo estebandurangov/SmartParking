@@ -6,14 +6,14 @@ from database.model import *
 
 with Session(getEngine()) as session:
 
-    def createVehicle(newPlate, newUserId):
+    def createVehicle(newUserId, newPlate):
         newVehicle = Vehiculo(
             placa = newPlate,
             user_id = newUserId
         )
         session.add(newVehicle)
         session.commit()
-        print(f"Registrado Placa {newPlate} en BD para el usuario {newUserId}")
+        return f"Registro exitoso de el vehículo con placa {newPlate} asociado al usuario {newUserId}"
 
     def readPlate(placa):
         stmt = select(Vehiculo).where(Vehiculo.placa.in_([placa]))
