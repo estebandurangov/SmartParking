@@ -55,7 +55,7 @@ class MyApp(App):
     def build(self):
         layout = BoxLayout(orientation='vertical', padding=10)
 
-        layout.add_widget(Label(text='Cadula'))
+        layout.add_widget(Label(text='Cedula'))
         cedula = TextInput(multiline=False)
         layout.add_widget(cedula)
 
