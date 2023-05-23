@@ -25,7 +25,7 @@ def cameraHandler():
 	open = readPlate(plate)
 	if (open):
 		print("\nAbriendo puerta")
-		#client.publish("motor", "1")
+		#client.publish("egine", "1")
 	else:
 		print('\nNo puedo abrir puerta')
 		#client.publish("luz_ingreso","1") # 1 => prende rojo => acceso denegado. 2 => prende azul => procesando. 3 => prende verde => acceso permitido
