@@ -40,6 +40,7 @@ def processPlate(fileRoute):
     if screenCnt is None:
         detected = 0
         print ("No contour detected")
+        return ""
 
     else:
         detected = 1

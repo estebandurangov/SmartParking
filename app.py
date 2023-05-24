@@ -23,18 +23,6 @@ def takePicture(route):
 	picam2.capture_file(route)
 	picam2.close()
 
-def cameraHandler():
-	fileRoute = '/home/admin/IoT/SmartParking/platePicture.jpg'
-	#takePicture(fileRoute)
-	plate = processPlate(fileRoute)
-	open = readPlate(plate)
-	if (open):
-		print("\nAbriendo puerta")
-		#client.publish("engine", "1")
-	else:
-		print('\nNo puedo abrir puerta')
-		#client.publish("luz_ingreso","1") # 1 => prende rojo => acceso denegado. 2 => prende azul => procesando. 3 => prende verde => acceso permitido
-
 class MyBox(BoxLayout):
 	pass
 
@@ -46,6 +34,21 @@ class EdgeApp(App):
 	def registerHandler(self, cedula, placa):
 		result = createVehicle(cedula, placa)
 		self.client.publish("register", result)
+		self.client.publish("engine", "1")
+
+	def cameraHandler(self):
+		self.client.publish("statuslight","2")
+		fileRoute = '/home/admin/IoT/SmartParking/platePicture.jpg'
+		takePicture(fileRoute)
+		plate = processPlate(fileRoute)
+		open = readPlate(plate)
+		if (open):
+			print("\nAbriendo puerta")
+			self.client.publish("engine", "1")
+			self.client.publish("statuslight","3")
+		else:
+			print('\nNo puedo abrir puerta')
+			self.client.publish("statuslight","1") # 1 => prende rojo => acceso denegado. 2 => prende azul => procesando. 3 => prende verde => acceso permitido
 	
 	def on_start(self):
 		
@@ -54,7 +57,7 @@ class EdgeApp(App):
 			topic = message.topic
 
 			if topic == "camera" and processedMessage == "1":
-				cameraHandler()
+				self.cameraHandler()
 
 			if topic == "register":
 				userdata['self'].root.ids.registrar_label.text = str(message.payload.decode("utf-8"))
