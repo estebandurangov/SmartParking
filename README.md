@@ -13,7 +13,7 @@ dibujito de cara al usuario de la distribución del sistema
 
 ## 2. Arquitectura
 
-![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/assets/arqiot.png)
+![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/arqiot.png)
 
 Definición tópicos que se usaraán en mqtt
 
