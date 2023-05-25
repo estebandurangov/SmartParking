@@ -5,6 +5,7 @@ El objetivo principal de este proyecto IoT es mejorar la experiencia de los
 usuarios de parqueaderos, ya que la automatización del ingreso reducirá el 
 tiempo de espera y aumentará la seguridad en el acceso.
 
+## Diagrama de casos de uso
 [diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/casosdeuso.drawio.png)
 
 descripción casos de uso más grandes
@@ -13,6 +14,7 @@ dibujito de cara al usuario de la distribución del sistema
 
 ## 2. Arquitectura
 
+## Diagrama de la arquitectura
 ![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/arqiot.png)
 
 Definición tópicos que se usaraán en mqtt
