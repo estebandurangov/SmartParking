@@ -13,7 +13,7 @@ dibujito de cara al usuario de la distribución del sistema
 
 ## 2. Arquitectura
 
-diagrama arquitectura
+![Diagrama de la arquitectura implementada](https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png)
 
 Definición tópicos que se usaraán en mqtt
 
