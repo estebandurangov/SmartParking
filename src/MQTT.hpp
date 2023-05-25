@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-const char* MQTT_BROKER_ADRESS = "192.168.43.4";
+const char* MQTT_BROKER_ADRESS = "192.168.25.226";
 const uint16_t MQTT_PORT = 1883;
 const char* MQTT_CLIENT_NAME = "ESPClient_2";
 
@@ -14,7 +14,8 @@ WiFiClient espClient;
 PubSubClient mqttClient(espClient);
 
 void SuscribeMqtt() {
-  mqttClient.subscribe("motor");
+  mqttClient.subscribe("statuslight");
+  mqttClient.subscribe("engine");
 }
 
 String payload;
@@ -29,23 +30,45 @@ void PublisMqttString(char* topic, char* msg) {
    mqttClient.publish(topic, msg);
 }
 
-String content = "";
+String message = "";
 
 void OnMqttReceived(char* topic, byte* payload, unsigned int length) {
-   content = "";   
+
+   message = "";
    for (size_t i = 0; i < length; i++) {
-      content.concat((char)payload[i]);
+      message.concat((char)payload[i]);
    }
 
-   if (content[0] == '1'){
-      Serial.println(servoMotor.read());
-      //if(servoMotor.read()<90)
+   if(strcmp(topic, "statuslight") == 0){
+      if (message[0] == '1'){
+         digitalWrite(19, 1);
+         digitalWrite(5, 0);
+         digitalWrite(18, 0);
+      }
+      else if (message[0] == '2'){         
+         digitalWrite(5, 1);
+         digitalWrite(19, 0);
+         digitalWrite(18, 0);
+      }
+      else if (message[0] == '3'){
+         digitalWrite(18, 1);
+         digitalWrite(5, 0);
+         digitalWrite(19, 0);
+      }
+   }
+
+
+   if(strcmp(topic, "engine") == 0){
+
+      // abre
+      if (message[0] == '1'){
+         servoMotor.write(1);
+         delay(150); // waits 150ms to reach the position
+      }
+      // cierra
+      if(message[0] == '0'){
          servoMotor.write(95);
-         //delay(15); // waits 15ms to reach the position
-      
-   }
-
-   if (content[0] == '0'){
-      servoMotor.write(1);
+         delay(150); // waits 150ms to reach the position
+      }
    }
 }
