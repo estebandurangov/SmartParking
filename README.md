@@ -8,8 +8,8 @@ tiempo de espera y aumentará la seguridad en el acceso.
 ## Diagrama de casos de uso
 ![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/casosdeuso.drawio.png)
 
-#descripción caso de uso más relevante
-## CASO DE USO VALIDAR INGRESO
+## descripción caso de uso más relevante
+# CASO DE USO VALIDAR INGRESO
 validación de ingreso de un vehículo al parqueadero inteligente utilizando sensores y reconocimiento de placa. El objetivo principal es automatizar y agilizar el proceso de registro y control de acceso al parqueadero, proporcionando una experiencia conveniente tanto para los usuarios como para los administradores del parqueadero.
 
 # El flujo del caso de uso sería el siguiente:
@@ -34,7 +34,7 @@ Este caso de uso de validar ingreso de un vehículo por medio de sensores y reco
 
 ## distribución del sistema
 
-![Diagrama de la arquitectura implementada].(https://github.com/estebandurangov/SmartParking/blob/main/iot%20smart%20parking.png)
+![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/iot%20smart%20parking.png)
 
 ## 2. Arquitectura
 
