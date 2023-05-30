@@ -8,26 +8,19 @@ tiempo de espera y aumentará la seguridad en el acceso.
 ## Diagrama de casos de uso
 ![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/casosdeuso.drawio.png)
 
-## descripción caso de uso más relevante
+# Descripción caso de uso más relevante
 # CASO DE USO VALIDAR INGRESO
 validación de ingreso de un vehículo al parqueadero inteligente utilizando sensores y reconocimiento de placa. El objetivo principal es automatizar y agilizar el proceso de registro y control de acceso al parqueadero, proporcionando una experiencia conveniente tanto para los usuarios como para los administradores del parqueadero.
 
 # El flujo del caso de uso sería el siguiente:
 
 1. El vehículo se acerca a la entrada del parqueadero y se activan los sensores de detección de presencia.
-
 2. Los sensores captan la presencia del vehículo y envían una señal al sistema de reconocimiento de placa.
-
-3. El sistema de reconocimiento de placa utiliza cámaras o dispositivos especializados para capturar una imagen de la placa del vehículo.
-
-4. A continuación, el software analiza la imagen de la placa utilizando algoritmos de reconocimiento óptico de caracteres (OCR) para extraer los caracteres alfanuméricos de la placa.
-
-5. El sistema compara los caracteres extraídos con una base de datos interna que contiene las placas autorizadas o restringidas.
-
+3. El sistema de reconocimiento de placa utiliza una cámara especializada para capturar una imagen de la placa del vehículo.
+4. A continuación, el software analiza la imagen de la placa utilizando OpenCV, con reconocimiento óptico de caracteres (OCR) para extraer los caracteres alfanuméricos de la placa.
+5. El sistema compara los caracteres extraídos con una base de datos interna que contiene las placas autorizadas.
 6. Si la placa coincide con una placa autorizada, el software envía una señal para abrir la barrera o puerta de acceso al parqueadero.
-
 7. En caso de que la placa no esté autorizada o se encuentre en la lista de restricción, el software registra la entrada como no válida y puede enviar una alerta al personal de seguridad.
-
 8. Una vez que se valida la entrada, el sistema registra la hora y fecha de ingreso del vehículo junto con la placa en una base de datos interna para futuras referencias y seguimiento.
 
 Este caso de uso de validar ingreso de un vehículo por medio de sensores y reconocimiento de placa a un parqueadero inteligente ofrece una forma eficiente y segura de gestionar el acceso de vehículos al parqueadero, reduciendo los tiempos de espera y proporcionando un control automatizado y preciso.
@@ -43,12 +36,11 @@ Este caso de uso de validar ingreso de un vehículo por medio de sensores y reco
 
 Definición tópicos que se usaraán en mqtt
 
-## 3. Guía de instalación
+## 3. Trabajo futuro
+El trabajo futuro del presente sistema de estacionamiento inteligente se enfocará en mejorar la precisión, eficiencia y conveniencia del proceso de estacionamiento a través de tecnologías avanzadas, integración de sistemas y enfoques sostenibles, Agregar una interfaz para el registro manual de vehiculos. Esto brindará beneficios tanto a los usuarios como a los administradores del estacionamiento, mejorando la experiencia general de estacionamiento en entornos urbanos.
+Agregar análisis de datos históricos y en tiempo real, para lograr que el sistema de estacionamiento inteligente pueda predecir y gestionar la demanda de espacios de estacionamiento de manera más efectiva. Esto puede incluir la implementación de tarifas variables según la demanda, la identificación de patrones de uso y la optimización del espacio disponible.
 
-## 4. Trabajo futuro: ingreso manual, registro intento entrada a unidad (placa, hora, estado de ingreso), como pronunciar gui
-Kivy
-====
-
+## 4. Guía de instalación
 <img align="right" height="256" src="https://raw.githubusercontent.com/kivy/kivy/master/kivy/data/logo/kivy-icon-256.png"/>
 
 Innovative user interfaces made easy.
