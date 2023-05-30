@@ -8,9 +8,33 @@ tiempo de espera y aumentará la seguridad en el acceso.
 ## Diagrama de casos de uso
 ![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/casosdeuso.drawio.png)
 
-descripción casos de uso más grandes
+#descripción caso de uso más relevante
+## CASO DE USO VALIDAR INGRESO
+validación de ingreso de un vehículo al parqueadero inteligente utilizando sensores y reconocimiento de placa. El objetivo principal es automatizar y agilizar el proceso de registro y control de acceso al parqueadero, proporcionando una experiencia conveniente tanto para los usuarios como para los administradores del parqueadero.
 
-dibujito de cara al usuario de la distribución del sistema
+# El flujo del caso de uso sería el siguiente:
+
+1. El vehículo se acerca a la entrada del parqueadero y se activan los sensores de detección de presencia.
+
+2. Los sensores captan la presencia del vehículo y envían una señal al sistema de reconocimiento de placa.
+
+3. El sistema de reconocimiento de placa utiliza cámaras o dispositivos especializados para capturar una imagen de la placa del vehículo.
+
+4. A continuación, el software analiza la imagen de la placa utilizando algoritmos de reconocimiento óptico de caracteres (OCR) para extraer los caracteres alfanuméricos de la placa.
+
+5. El sistema compara los caracteres extraídos con una base de datos interna que contiene las placas autorizadas o restringidas.
+
+6. Si la placa coincide con una placa autorizada, el software envía una señal para abrir la barrera o puerta de acceso al parqueadero.
+
+7. En caso de que la placa no esté autorizada o se encuentre en la lista de restricción, el software registra la entrada como no válida y puede enviar una alerta al personal de seguridad.
+
+8. Una vez que se valida la entrada, el sistema registra la hora y fecha de ingreso del vehículo junto con la placa en una base de datos interna para futuras referencias y seguimiento.
+
+Este caso de uso de validar ingreso de un vehículo por medio de sensores y reconocimiento de placa a un parqueadero inteligente ofrece una forma eficiente y segura de gestionar el acceso de vehículos al parqueadero, reduciendo los tiempos de espera y proporcionando un control automatizado y preciso.
+
+## distribución del sistema
+
+![Diagrama de la arquitectura implementada].(https://github.com/estebandurangov/SmartParking/blob/main/iot%20smart%20parking.png)
 
 ## 2. Arquitectura
 
