@@ -62,7 +62,7 @@ void OnMqttReceived(char* topic, byte* payload, unsigned int length) {
 
       // abre
       if (message[0] == '1'){
-         servoMotor.write(1);
+         servoMotor.write(45);
          delay(150); // waits 150ms to reach the position
       }
       // cierra
