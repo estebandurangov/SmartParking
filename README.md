@@ -32,8 +32,11 @@ validación de ingreso de un vehículo al parqueadero inteligente utilizando sen
 ## Diagrama de la arquitectura
 ![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/arqiot.png)
 
-Definición tópicos que se usaraán en mqtt
-![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/Images/topics.png)
+## Topicos 
+El MQTT Broker actúa como el intermediario de mensajería entre la Raspberry Pi y los dispositivos ESP32. Facilita la transmisión de mensajes entre ellos.
+A continuación se exponen los tópicos que se usarán en MQTT
+
+![Topics implementada](https://github.com/estebandurangov/SmartParking/blob/main/Images/topics.png)
 
 ## 3. Trabajo futuro
 El trabajo futuro del presente sistema de estacionamiento inteligente se enfocará en mejorar la precisión, eficiencia y conveniencia del proceso de estacionamiento a través de tecnologías avanzadas, integración de sistemas y enfoques sostenibles, Agregar una interfaz para el registro manual de vehiculos. Esto brindará beneficios tanto a los usuarios como a los administradores del estacionamiento, mejorando la experiencia general de estacionamiento en entornos urbanos.
