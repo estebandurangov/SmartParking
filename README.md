@@ -23,8 +23,6 @@ validación de ingreso de un vehículo al parqueadero inteligente utilizando sen
 7. En caso de que la placa no esté autorizada o se encuentre en la lista de restricción, el software registra la entrada como no válida y puede enviar una alerta al personal de seguridad.
 8. Una vez que se valida la entrada, el sistema registra la hora y fecha de ingreso del vehículo junto con la placa en una base de datos interna para futuras referencias y seguimiento.
 
-Este caso de uso de validar ingreso de un vehículo por medio de sensores y reconocimiento de placa a un parqueadero inteligente ofrece una forma eficiente y segura de gestionar el acceso de vehículos al parqueadero, reduciendo los tiempos de espera y proporcionando un control automatizado y preciso.
-
 ## distribución del sistema
 
 ![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/iot%20smart%20parking.png)
