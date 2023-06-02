@@ -8,11 +8,11 @@ tiempo de espera y aumentará la seguridad en el acceso.
 ## Diagrama de casos de uso
 ![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/Images/casosdeuso.drawio.png)
 
-# Descripción caso de uso más relevante
-# CASO DE USO VALIDAR INGRESO
+## Descripción caso de uso más relevante
+## CASO DE USO VALIDAR INGRESO
 validación de ingreso de un vehículo al parqueadero inteligente utilizando sensores y reconocimiento de placa. El objetivo principal es automatizar y agilizar el proceso de registro y control de acceso al parqueadero, proporcionando una experiencia conveniente tanto para los usuarios como para los administradores del parqueadero.
 
-# El flujo del caso de uso sería el siguiente:
+## El flujo del caso de uso sería el siguiente:
 
 1. El vehículo se acerca a la entrada del parqueadero y se activan los sensores de detección de presencia.
 2. Los sensores captan la presencia del vehículo y envían una señal al sistema de reconocimiento de placa.
@@ -39,8 +39,15 @@ A continuación se exponen los tópicos que se usarán en MQTT
 ![Topics implementada](https://github.com/estebandurangov/SmartParking/blob/main/Images/topics.png)
 
 ## 3. Trabajo futuro
-El trabajo futuro del presente sistema de estacionamiento inteligente se enfocará en mejorar la precisión, eficiencia y conveniencia del proceso de estacionamiento a través de tecnologías avanzadas, integración de sistemas y enfoques sostenibles, Agregar una interfaz para el registro manual de vehiculos. Esto brindará beneficios tanto a los usuarios como a los administradores del estacionamiento, mejorando la experiencia general de estacionamiento en entornos urbanos.
-Agregar análisis de datos históricos y en tiempo real, para lograr que el sistema de estacionamiento inteligente pueda predecir y gestionar la demanda de espacios de estacionamiento de manera más efectiva. Esto puede incluir la implementación de tarifas variables según la demanda, la identificación de patrones de uso y la optimización del espacio disponible.
+*Registrar la hora de ingreso de los vehículos autorizados y marcar los espacios de estacionamiento correspondientes como ocupados en la base de datos del sistema.
+
+*Mejoras en la precisión y velocidad del reconocimiento de placa: Se puede trabajar en el desarrollo de algoritmos más avanzados y técnicas de procesamiento de imágenes para lograr una mayor precisión en el reconocimiento de placas y reducir los tiempos de respuesta. Esto permitiría una validación más rápida y confiable de los vehículos en la entrada del estacionamiento.
+
+*Integración con sistemas de pago y reserva: Smart Parking puede evolucionar para incluir una integración completa con sistemas de pago y reserva en línea. Esto permitiría a los conductores reservar plazas de estacionamiento con anticipación y realizar pagos de manera más conveniente, ya sea a través de aplicaciones móviles, tarjetas de crédito o sistemas de pago sin contacto.
+
+*Implementación de sensores de ocupación en tiempo real: La instalación de sensores de ocupación en cada plaza de estacionamiento permitiría monitorear en tiempo real la disponibilidad de plazas. Esto ayudaría a los conductores a encontrar rápidamente lugares vacantes y optimizar la utilización del espacio.
+
+*Uso de analítica de datos para la gestión del estacionamiento: La recopilación y análisis de datos generados por el sistema de Smart Parking puede proporcionar información valiosa para la toma de decisiones. Se pueden utilizar herramientas de análisis de datos para comprender los patrones de uso del estacionamiento, identificar áreas de congestión, mejorar la planificación de la capacidad y optimizar la eficiencia operativa.
 
 ## 4. Guía de instalación
 <img align="right" height="256" src="https://raw.githubusercontent.com/kivy/kivy/master/kivy/data/logo/kivy-icon-256.png"/>
