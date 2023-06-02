@@ -6,7 +6,7 @@ usuarios de parqueaderos, ya que la automatización del ingreso reducirá el
 tiempo de espera y aumentará la seguridad en el acceso.
 
 ## Diagrama de casos de uso
-![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/casosdeuso.drawio.png)
+![diagrama de casos de uso](https://github.com/estebandurangov/SmartParking/blob/main/Images/casosdeuso.drawio.png)
 
 # Descripción caso de uso más relevante
 # CASO DE USO VALIDAR INGRESO
@@ -25,12 +25,12 @@ validación de ingreso de un vehículo al parqueadero inteligente utilizando sen
 
 ## distribución del sistema
 
-![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/iot%20smart%20parking.png)
+![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/Images/iot%20smart%20parking.png)
 
 ## 2. Arquitectura
 
 ## Diagrama de la arquitectura
-![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/arqiot.png)
+![Diagrama de la arquitectura implementada](https://github.com/estebandurangov/SmartParking/blob/main/Images/arq%20IOT.drawio.png)
 
 ## Topicos 
 El MQTT Broker actúa como el intermediario de mensajería entre la Raspberry Pi y los dispositivos ESP32. Facilita la transmisión de mensajes entre ellos.
